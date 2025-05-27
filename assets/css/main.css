@@ -1420,7 +1420,32 @@ section,
     font-size: 36px;
   }
 }
-
+/* Mobile Vertical Gap Controller */
+@media (max-width: 768px) {
+  .services .row {
+    --mobile-gap: 20px; /* Adjust this value as needed */
+    
+    /* Solution 1: Using flex gap (modern approach) */
+    gap: var(--mobile-gap) 0;
+    
+    /* Solution 2: Alternative using margins (backward compatible) */
+    margin-bottom: calc(-1 * var(--mobile-gap));
+  }
+  
+  .services .row > [class*="col-"] {
+    margin-bottom: var(--mobile-gap);
+  }
+  
+  /* Ensures last item doesn't have extra margin */
+  .services .row > [class*="col-"]:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Additional adjustment for service cards */
+  .services .service-card {
+    margin-bottom: 0; /* Reset if previously set */
+  }
+}
 @media (max-width: 768px) {
   .services {
     padding: 60px 0;
@@ -1435,7 +1460,8 @@ section,
   }
   
   .services .service-card {
-    padding: 30px;
+   padding-top: 15px;
+    padding-bottom: 15px;
   }
   
   .services .service-card .service-icon {
